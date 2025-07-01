@@ -10,6 +10,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-openssl": "*",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1"
     },
@@ -58,6 +63,12 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+                "deploy": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache",
+            "@php artisan storage:link"
         ]
     },
     "extra": {
@@ -72,7 +83,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
-        }
+        },
+         "platform-check": false
     },
     "minimum-stability": "stable",
     "prefer-stable": true
